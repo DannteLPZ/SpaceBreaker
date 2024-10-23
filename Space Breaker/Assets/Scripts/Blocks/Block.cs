@@ -19,6 +19,7 @@ public class Block : MonoBehaviour
     public void HitBlock()
     {
         _resistance--;
+        GameManager.Instance.AddScore();
         if(_resistance <= 0) Destroy(gameObject);
     }
 }

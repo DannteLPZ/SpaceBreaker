@@ -11,38 +11,22 @@ public class SphereManager : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
 
     //Define input actions for aiming and launching
-    private PlayerInput _playerInput;
-    private InputAction _move;
-    private InputAction _launch;
+    
 
     private Vector2 _startingPosition;
 
     private float _launchAngle;
     private bool _hasLaunched;
 
-    private void Awake()
-    {
-        _playerInput = new();
-        _move = _playerInput.Gameplay.Move;
-        _launch = _playerInput.Gameplay.Launch;
-
-        _launch.performed += x => Launch();
-
-        _playerInput.Enable();
-    }
-
-    private void Start() => _startingPosition = _sphere.transform.position;
+    
 
     private void Update()
     {
         if(_hasLaunched == false)
-        {
             ModifyAngle();
-            _arrow.transform.rotation = Quaternion.Euler(_launchAngle * Vector3.forward);
-        }
     }
 
-    private void Launch()
+    public void Launch()
     {
         if(_hasLaunched == false)
         {
@@ -54,15 +38,21 @@ public class SphereManager : MonoBehaviour
 
     private void ModifyAngle()
     {
-        float inputDirection = _move.ReadValue<float>();
-        _launchAngle -= inputDirection * _rotationSpeed * Time.deltaTime;
-        _launchAngle = Mathf.Clamp(_launchAngle, -60.0f, 60.0f); 
+        _launchAngle -= InputManager.Instance.MoveValue * _rotationSpeed * Time.deltaTime;
+        _launchAngle = Mathf.Clamp(_launchAngle, -60.0f, 60.0f);
+        _arrow.transform.rotation = Quaternion.Euler(_launchAngle * Vector3.forward);
     }
 
     public void ResetLaunch()
     {
-        _sphere.StopSphere();
+        ResetSphere();
+        _sphere.ResetSphere();
         _arrow.SetActive(true);
         _hasLaunched = false;
+    }
+    public void ResetSphere()
+    {
+        _sphere.StopSphere();
+        _sphere.ResetSphere();
     }
 }

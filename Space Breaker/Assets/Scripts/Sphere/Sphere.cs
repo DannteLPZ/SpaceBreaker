@@ -8,8 +8,12 @@ public class Sphere : MonoBehaviour
     [Header("Values")]
     [SerializeField] private LayerMask _bouncingLayer;
     [SerializeField] private float _sphereSpeed;
+    [SerializeField] private Vector3 _sphereOffset;
 
     private Vector2 _normalizedVelocity;
+    private Transform _playerTransform;
+
+    private void Start() => _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
     public void LaunchSphere(float angle)
     {
@@ -36,7 +40,11 @@ public class Sphere : MonoBehaviour
             if (Mathf.Sign(normal.y) != Mathf.Sign(_normalizedVelocity.y) && normal.y != 0.0f)
                 newVelocity.y *= -1.0f;
 
-            _sphereRb.velocity = _sphereSpeed * newVelocity;
+            collision.gameObject.TryGetComponent(out Rigidbody2D rb);
+            if (rb != null)
+                newVelocity += rb.velocity.normalized;
+
+            _sphereRb.velocity = _sphereSpeed * newVelocity.normalized;
             _normalizedVelocity = _sphereRb.velocity.normalized;
 
             collision.gameObject.TryGetComponent(out Block block);
@@ -45,5 +53,6 @@ public class Sphere : MonoBehaviour
         }
     }
 
+    public void ResetSphere() => transform.position = _playerTransform.position + _sphereOffset;
     public void StopSphere() => _sphereRb.velocity = Vector2.zero;
 }

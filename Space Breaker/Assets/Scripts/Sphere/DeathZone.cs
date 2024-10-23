@@ -10,8 +10,6 @@ public class DeathZone : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == Mathf.Log(_sphereLayer, 2))
-        {
             _onSphereLost.Invoke();
-        }
     }
 }
