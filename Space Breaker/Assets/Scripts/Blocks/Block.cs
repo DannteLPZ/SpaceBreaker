@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [Header("Values")]
     [SerializeField] private BlockType _blockType;
     [SerializeField] private BlockRuntimeSet _runtimeSet;
 

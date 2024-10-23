@@ -11,8 +11,11 @@ public class Sphere : MonoBehaviour
 
     private Vector2 _normalizedVelocity;
 
-    public void LaunchSphere(Vector2 direction)
+    public void LaunchSphere(float angle)
     {
+        float x = -Mathf.Sin(angle);
+        float y = Mathf.Cos(angle);
+        Vector2 direction = new(x, y);
         _sphereRb.velocity = _sphereSpeed * direction.normalized;
         _normalizedVelocity = _sphereRb.velocity.normalized;
     }
@@ -41,4 +44,6 @@ public class Sphere : MonoBehaviour
                 block.HitBlock();
         }
     }
+
+    public void StopSphere() => _sphereRb.velocity = Vector2.zero;
 }
