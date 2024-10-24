@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef9590cd69f79074791c1f7dc5b09e62, type: 3}
-  m_Name: One Hit
+  m_Name: Three Hit
   m_EditorClassIdentifier: 
-  Resistance: 1
+  Resistance: 3
   Colors:
+  - {r: 0.843452, g: 0.19215685, b: 0.99215686, a: 1}
+  - {r: 0.41107774, g: 0.19215685, b: 0.99215686, a: 1}
   - {r: 0.19157171, g: 0.4590234, b: 0.990566, a: 1}
