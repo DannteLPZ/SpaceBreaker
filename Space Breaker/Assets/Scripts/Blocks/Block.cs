@@ -41,11 +41,11 @@ public class Block : MonoBehaviour
         Color newColor = _blockType.Colors[_blockType.Resistance - _resistance];
         _material.SetColor("_BlockColor", newColor);
         
-        float crackRadius;
+        float crackProgress;
         if (_blockType.Resistance > 1)
         {
-            crackRadius = (_blockType.Resistance - (float)_resistance) / (_blockType.Resistance - 1);
-            _material.SetFloat("_Radius", crackRadius);
+            crackProgress = _blockType.Resistance - (float)_resistance;
+            _material.SetFloat("_CrackProgress", crackProgress);
         }
 
     }
