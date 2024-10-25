@@ -1,10 +1,16 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UICanvasGroupHandler : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroup;
 
-    public void ShowCanvasGroup() => HandleGroupVisibility(true);
+    public void ShowCanvasGroup(GameObject firstSelected = null)
+    {
+        HandleGroupVisibility(true);
+        EventSystem.current.SetSelectedGameObject(firstSelected);
+    }
+
     public void HideCanvasGroup() => HandleGroupVisibility(false);
     public void ToggleCanvasGroup() => HandleGroupVisibility(!_canvasGroup.interactable);
     private void HandleGroupVisibility(bool active)

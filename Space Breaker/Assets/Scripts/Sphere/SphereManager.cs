@@ -10,11 +10,6 @@ public class SphereManager : MonoBehaviour
     [Header("Values")]
     [SerializeField] private float _rotationSpeed;
 
-    //Define input actions for aiming and launching
-    
-
-    private Vector2 _startingPosition;
-
     private float _launchAngle;
     private bool _hasLaunched;
 

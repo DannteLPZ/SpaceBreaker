@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUp - Extra Life
       objectReference: {fileID: 0}
+    - target: {fileID: 1401483141938523800, guid: 04c5c86cc6ce08d4e89afe47ecca5997, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab6dd3926a39fa34e9cae36aed66d04d, type: 3}
     - target: {fileID: 7709713102624357102, guid: 04c5c86cc6ce08d4e89afe47ecca5997, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

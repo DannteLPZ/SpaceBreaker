@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour
 {
+    private const string SFX_HIT = "SFX_BlockHit";
+    private const string SFX_BOUNCE = "SFX_Bounce";
+
     [Header("Components")]
     [SerializeField] private Rigidbody2D _sphereRb;
 
@@ -9,6 +12,9 @@ public class Sphere : MonoBehaviour
     [SerializeField] private LayerMask _bouncingLayer;
     [SerializeField] private float _sphereSpeed;
     [SerializeField] private Vector3 _sphereOffset;
+
+    [Header("Game Events")]
+    [SerializeField] private StringEvent _onAudioPlayed; 
 
     private Vector2 _normalizedVelocity;
     private Transform _playerTransform;
@@ -49,7 +55,12 @@ public class Sphere : MonoBehaviour
 
             collision.gameObject.TryGetComponent(out Block block);
             if (block != null)
+            {
                 block.HitBlock();
+                _onAudioPlayed.Invoke(SFX_HIT);
+            }
+            else
+                _onAudioPlayed.Invoke(SFX_BOUNCE);
         }
     }
 
