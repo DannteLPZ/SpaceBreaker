@@ -53,6 +53,11 @@ public class Sphere : MonoBehaviour
         }
     }
 
-    public void ResetSphere() => transform.position = _playerTransform.position + _sphereOffset;
+    public void ResetSphere()
+    {
+        if(_playerTransform != null)
+            transform.position = _playerTransform.position + _sphereOffset;
+    }
+
     public void StopSphere() => _sphereRb.velocity = Vector2.zero;
 }

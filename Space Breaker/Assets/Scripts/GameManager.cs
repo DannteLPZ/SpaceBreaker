@@ -2,52 +2,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Values")]
-    [SerializeField] private int _startingLives;
-
-    [Header("Events")]
-    [SerializeField] private GameEvent _onLaunchReset;
-    [SerializeField] private GameEvent _onLivesUpdated;
-    [SerializeField] private GameEvent _onGameOver;
-    [SerializeField] private GameEvent _onScoreUpdated;
-
-    private int _lives;
-    public int Lives => _lives;
+    [Header("Value Events")]
+    [SerializeField] private IntEvent _onScoreUpdated;
 
     private int _score;
-    public int Score => _score;
 
-    public static GameManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-
-        _lives = _startingLives;
-    }
-
-    public void AddLife()
-    {
-        _lives++;
-        _onLivesUpdated.Invoke();
-    }
-
-    public void RemoveLife()
-    {
-        _lives--;
-        _onLivesUpdated.Invoke();
-        if(_lives == 0)
-            _onGameOver.Invoke();
-        else
-            _onLaunchReset.Invoke();
-    }
-
-    public void AddScore()
+    public void HitBlock()
     {
         _score += 100;
-        _onScoreUpdated.Invoke();
+        _onScoreUpdated.Invoke(_score);
     }
+
+    public void ToggleTimeScale() => HandleGameTime(Time.timeScale == 1.0f);
+    private void HandleGameTime(bool paused) => Time.timeScale = paused ? 0.0f : 1.0f;
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -39,5 +40,16 @@ public class PlayerMovement : MonoBehaviour
         _playerRb.velocity = Vector2.zero;
     }
 
+    public void IncreaseSpeed(float duration)
+    {
+        _moveSpeed *= 2.0f;
+        StartCoroutine(ReduceSpeed(duration));
+    }
+
+    private IEnumerator ReduceSpeed(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _moveSpeed /= 2.0f;
+    }
 
 }

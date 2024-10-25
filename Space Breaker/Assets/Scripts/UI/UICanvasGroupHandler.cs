@@ -6,11 +6,12 @@ public class UICanvasGroupHandler : MonoBehaviour
 
     public void ShowCanvasGroup() => HandleGroupVisibility(true);
     public void HideCanvasGroup() => HandleGroupVisibility(false);
-
+    public void ToggleCanvasGroup() => HandleGroupVisibility(!_canvasGroup.interactable);
     private void HandleGroupVisibility(bool active)
     {
         _canvasGroup.alpha = active ? 1.0f : 0.0f;
         _canvasGroup.interactable = active;
         _canvasGroup.blocksRaycasts = active;
     }
+
 }

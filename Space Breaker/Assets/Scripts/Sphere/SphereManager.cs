@@ -18,8 +18,6 @@ public class SphereManager : MonoBehaviour
     private float _launchAngle;
     private bool _hasLaunched;
 
-    
-
     private void Update()
     {
         if(_hasLaunched == false)

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1370781014770981851}
-  - component: {fileID: 5320282609633584077}
-  - component: {fileID: 6317545143687588923}
+  - component: {fileID: 3400281768084198158}
+  - component: {fileID: 646884535791124151}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5320282609633584077
+--- !u!114 &3400281768084198158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,11 +47,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352254850596053047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab67e77f3ce8954cba308470648c09e, type: 3}
+  m_Script: {fileID: 11500000, guid: 506da85326aaded4cafe605a309c3c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreText: {fileID: 7380638552131740517}
---- !u!114 &6317545143687588923
+  _text: {fileID: 7380638552131740517}
+  _startingString: 'Score: '
+--- !u!114 &646884535791124151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,18 +61,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352254850596053047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93288b661d128046b4f63a19de8490b, type: 3}
+  m_Script: {fileID: 11500000, guid: bda63c76707bacd4794b0761c76db2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameEvents:
-  - {fileID: 11400000, guid: 1aa04cb65dc12434b8336d77e1553796, type: 2}
+  - {fileID: 11400000, guid: 210c4e33845d42c4c84def7dc63e8c35, type: 2}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5320282609633584077}
-        m_TargetAssemblyTypeName: UIScore, Assembly-CSharp
-        m_MethodName: SetScoreText
-        m_Mode: 1
+      - m_Target: {fileID: 3400281768084198158}
+        m_TargetAssemblyTypeName: UITextSet, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -91,7 +92,7 @@ GameObject:
   - component: {fileID: 8719978602580828334}
   - component: {fileID: 2503850810247822877}
   - component: {fileID: 2752175466142922361}
-  - component: {fileID: 7178835673466476221}
+  - component: {fileID: 1136490771071522}
   m_Layer: 0
   m_Name: Lives
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 2
   m_Spacing: -1600
@@ -158,8 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506da85326aaded4cafe605a309c3c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _livesText: {fileID: 1362298992972621175}
---- !u!114 &7178835673466476221
+  _text: {fileID: 1362298992972621175}
+  _startingString: 'x '
+--- !u!114 &1136490771071522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,18 +170,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2311945543952031399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93288b661d128046b4f63a19de8490b, type: 3}
+  m_Script: {fileID: 11500000, guid: bda63c76707bacd4794b0761c76db2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameEvents:
-  - {fileID: 11400000, guid: 7acb8b0bd962adb46a80de3dc01c0a64, type: 2}
+  - {fileID: 11400000, guid: d65ad05af254caf48bf5ccd73b35b708, type: 2}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2752175466142922361}
-        m_TargetAssemblyTypeName: UILives, Assembly-CSharp
-        m_MethodName: SetLivesText
-        m_Mode: 1
+        m_TargetAssemblyTypeName: UITextSet, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -223,7 +225,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3595373521058758471
 CanvasRenderer:
@@ -253,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7a83771be173a4f44b9417bf65e5860c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -298,7 +300,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 100}
+  m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5275738647228503044
 CanvasRenderer:
@@ -355,7 +357,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -534,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7123807544539616276
