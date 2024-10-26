@@ -9,6 +9,7 @@ public class BlockRuntimeSet : ScriptableObject
     public List<Block> Blocks => _blocks;
     public Action OnBlockDestroyed;
 
+    public void Clear() => _blocks.Clear();
     public void Add(Block block)
     {
         if (_blocks.Contains(block) == false) _blocks.Add(block);
