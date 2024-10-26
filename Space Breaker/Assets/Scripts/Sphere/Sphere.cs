@@ -46,12 +46,13 @@ public class Sphere : MonoBehaviour
             if (Mathf.Sign(normal.y) != Mathf.Sign(_normalizedVelocity.y) && normal.y != 0.0f)
                 newVelocity.y *= -1.0f;
 
+            //Check for paddle movement for transfer
             collision.gameObject.TryGetComponent(out Rigidbody2D rb);
             if (rb != null)
                 newVelocity += rb.velocity.normalized;
 
-            _sphereRb.velocity = _sphereSpeed * newVelocity.normalized;
-            _normalizedVelocity = _sphereRb.velocity.normalized;
+            _normalizedVelocity = newVelocity.normalized;
+            _sphereRb.velocity = _sphereSpeed * _normalizedVelocity;
 
             collision.gameObject.TryGetComponent(out Block block);
             if (block != null)
