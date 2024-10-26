@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const string SFX_SPEEDUP = "SFX_SpeedUp";
+
     [Header("Components")]
     [SerializeField] private Rigidbody2D _playerRb;
 
@@ -10,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _xRange;
 
+    [Header("Value Events")]
+    [SerializeField] private StringEvent _audioPlayed;
+
     private Vector3 _startPosition;
+    private float _extraSpeed;
     private bool _isEnabled;
 
     private void Start() => _startPosition = transform.position;
@@ -29,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isEnabled == true)
-            _playerRb.velocity = InputManager.Instance.MoveValue * _moveSpeed * Vector2.right;
+            _playerRb.velocity = InputManager.Instance.MoveValue * (_moveSpeed + _extraSpeed) * Vector2.right;
     }
 
     public void AllowMovement() => _isEnabled = true;
@@ -40,16 +46,17 @@ public class PlayerMovement : MonoBehaviour
         _playerRb.velocity = Vector2.zero;
     }
 
-    public void IncreaseSpeed(float duration)
+    public void SetExtraSpeed(float extraSpeed, float duration)
     {
-        _moveSpeed *= 2.0f;
-        StartCoroutine(ReduceSpeed(duration));
+        StopAllCoroutines();
+        _extraSpeed = extraSpeed;
+        _audioPlayed.Invoke(SFX_SPEEDUP);
+        StartCoroutine(ResetSpeed(duration));
     }
 
-    private IEnumerator ReduceSpeed(float duration)
+    private IEnumerator ResetSpeed(float duration)
     {
         yield return new WaitForSeconds(duration);
-        _moveSpeed /= 2.0f;
+        _extraSpeed = 0.0f;
     }
-
 }

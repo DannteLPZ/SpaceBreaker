@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bad5638b7341b6c44866c6f46da073e8, type: 3}
-  m_Color: {r: 0.5613208, g: 0.8372348, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -146,5 +146,5 @@ MonoBehaviour:
   _particleEffects: {fileID: 1567894790243068671, guid: 91d1025f70fdf2e42a8aa68abd19270d, type: 3}
   _blockType: {fileID: 11400000, guid: 286762f1edac3fc4d809d878478af4f4, type: 2}
   _runtimeSet: {fileID: 11400000, guid: 3c724a2e5357354469f4d0e5f18c01d2, type: 2}
-  _powerUpManager: {fileID: 11400000, guid: f46e849a0d8b3c0419fad62befdaf394, type: 2}
+  _powerUpSet: {fileID: 11400000, guid: 164b745cced62a44993cfddd7ca4bb89, type: 2}
   _onBlockHit: {fileID: 11400000, guid: 9f70303a443511640a3b805e53f9a6d6, type: 2}

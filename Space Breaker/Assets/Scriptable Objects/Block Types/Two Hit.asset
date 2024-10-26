@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Resistance: 2
   Colors:
-  - {r: 0.41107774, g: 0.19215685, b: 0.99215686, a: 1}
+  - {r: 0.19215685, g: 0.99215686, b: 0.5631659, a: 1}
   - {r: 0.19157171, g: 0.4590234, b: 0.990566, a: 1}

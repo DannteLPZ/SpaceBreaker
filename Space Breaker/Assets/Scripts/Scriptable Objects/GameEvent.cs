@@ -17,6 +17,7 @@ public class GameEvent : ScriptableObject
         if (Listeners.Contains(listener) == true) _listeners.Remove(listener);
     }
 
+    [ContextMenu("Invoke")]
     public void Invoke()
     {
         foreach (GameEventListener listener in _listeners)

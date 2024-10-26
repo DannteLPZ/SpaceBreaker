@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PowerUp Manager", menuName = "Scriptable Objects/PowerUp Manager")]
-public class PowerUpManager : ScriptableObject
+[CreateAssetMenu(fileName = "PowerUp Set", menuName = "Scriptable Objects/PowerUp Set")]
+public class PowerUpSet : ScriptableObject
 {
     public List<GameObject> PowerUps = new();
     [Range(1.0f, 100.0f)]

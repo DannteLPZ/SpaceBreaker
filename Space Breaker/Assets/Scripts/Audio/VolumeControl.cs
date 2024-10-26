@@ -11,7 +11,8 @@ public class VolumeControl : MonoBehaviour
     private void Start()
     {
         _volumeSlider.onValueChanged.AddListener(x => ChangeVolume());
-        PlayerPrefs.GetFloat(_parameter, _volumeSlider.value);
+        _volumeSlider.value = PlayerPrefs.GetFloat(_parameter, _volumeSlider.value);
+
     }
 
     private void ChangeVolume()

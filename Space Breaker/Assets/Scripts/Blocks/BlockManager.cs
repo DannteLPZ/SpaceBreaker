@@ -13,10 +13,9 @@ public class BlockManager : MonoBehaviour
     [Header("Value Events")]
     [SerializeField] private StringEvent _onAudioPlayed;
 
-    private void OnEnable() => _runtimeSet.OnBlockDestroyed += CheckAmountLeft;
-    private void OnDisable() => _runtimeSet.OnBlockDestroyed -= CheckAmountLeft;
+    private void Awake() => _runtimeSet.BlockManager = this;
 
-    private void CheckAmountLeft()
+    public void CheckAmountLeft()
     {
         if (_runtimeSet.Blocks.Count <= 0)
         {

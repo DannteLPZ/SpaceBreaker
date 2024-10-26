@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     [Header("Values")]
     [SerializeField] private BlockType _blockType;
     [SerializeField] private BlockRuntimeSet _runtimeSet;
-    [SerializeField] private PowerUpManager _powerUpManager;
+    [SerializeField] private PowerUpSet _powerUpSet;
 
     [Header("GameEvents")]
     [SerializeField] private GameEvent _onBlockHit;
@@ -24,11 +24,15 @@ public class Block : MonoBehaviour
     private void Start()
     {
         _resistance = _blockType.Resistance;
+
+        //Get components for visuals
         _material = GetComponent<Renderer>().material;
         _material.SetColor("_BlockColor", _blockType.Colors[0]);
         _particles = Instantiate(_particleEffects, transform.position, Quaternion.identity, transform)
                         .GetComponent<ParticleSystem>();
-        _powerUp = _powerUpManager.ChancePowerUp();
+
+        //Check if powerup will be given on destroy
+        _powerUp = _powerUpSet.ChancePowerUp();
         if(_powerUp != null)
         {
             _powerUp = Instantiate(_powerUp, transform.position, Quaternion.identity, transform);
@@ -53,6 +57,8 @@ public class Block : MonoBehaviour
                 _powerUp.SetActive(true);
                 _powerUp.transform.parent = null;
             }
+            _runtimeSet.Remove(this);
+            _runtimeSet.BlockManager.CheckAmountLeft();
             Destroy(gameObject);
         }
     }

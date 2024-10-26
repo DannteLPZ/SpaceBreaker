@@ -7,9 +7,9 @@ public class BlockRuntimeSet : ScriptableObject
 {
     private List<Block> _blocks = new();
     public List<Block> Blocks => _blocks;
-    public Action OnBlockDestroyed;
 
-    public void Clear() => _blocks.Clear();
+    public BlockManager BlockManager;
+
     public void Add(Block block)
     {
         if (_blocks.Contains(block) == false) _blocks.Add(block);
@@ -17,10 +17,6 @@ public class BlockRuntimeSet : ScriptableObject
 
     public void Remove(Block block)
     {
-        if (_blocks.Contains(block) == true)
-        {
-            _blocks.Remove(block);
-            OnBlockDestroyed?.Invoke();
-        }
+        if (_blocks.Contains(block) == true) _blocks.Remove(block);
     }
 }

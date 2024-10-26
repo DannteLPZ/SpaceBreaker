@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44d996b0f9b45f4bbbb6c0d6b8471dd, type: 3}
-  m_Name: Life Added
+  m_Script: {fileID: 11500000, guid: 7c28abf751815e44f9536fce010d491f, type: 3}
+  m_Name: PowerUp Set
   m_EditorClassIdentifier: 
+  PowerUps:
+  - {fileID: 1008763260369022098, guid: 04c5c86cc6ce08d4e89afe47ecca5997, type: 3}
+  - {fileID: 7407465614430513478, guid: 333e7f0bd994bb7449685c1b3e38f656, type: 3}
+  Chance: 15

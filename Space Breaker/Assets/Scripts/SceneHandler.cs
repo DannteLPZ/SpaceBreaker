@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SceneHandler : MonoBehaviour
 {
-    [SerializeField] private Animator _loadingScreenAnimator;
+    [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Slider _loadingBar;
 
     public static SceneHandler Instance;
@@ -28,7 +28,6 @@ public class SceneHandler : MonoBehaviour
         if (sceneId > sceneAmount - 1)
             sceneId = 0;
         _loadingBar.value = 0.0f;
-        _loadingScreenAnimator.SetBool("Active", true);
         StartCoroutine(ChangeScene(sceneId));
     }
 
@@ -46,18 +45,27 @@ public class SceneHandler : MonoBehaviour
 
     private IEnumerator ChangeScene(int sceneId)
     {
+        _loadingScreen.SetActive(true);
         yield return new WaitForSecondsRealtime(1.0f);
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneId);
-        loadOperation.allowSceneActivation = false;
 
-        while(loadOperation.progress < 0.9f)
+        while(!loadOperation.isDone)
         {
-            _loadingBar.value = loadOperation.progress;
+            float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
+            _loadingBar.value = progress;
             yield return null;
         }
         Time.timeScale = 1.0f;
-        loadOperation.allowSceneActivation = true;
-        _loadingScreenAnimator.SetBool("Active", false);
+        _loadingScreen.SetActive(false);
+    }
+
+    //Save unlocked level
+    public void UnlockLevelScene()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int savedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        if (savedLevel < currentIndex + 1)
+            PlayerPrefs.SetInt("UnlockedLevel", currentIndex + 1); 
     }
 
     public void Quit()

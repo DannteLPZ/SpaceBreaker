@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block - Three Hit Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4299872477824580331, guid: bb69c32f86070ee428a774b7cadaef12, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299872477824580331, guid: bb69c32f86070ee428a774b7cadaef12, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299872477824580331, guid: bb69c32f86070ee428a774b7cadaef12, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8513910528733231868, guid: bb69c32f86070ee428a774b7cadaef12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

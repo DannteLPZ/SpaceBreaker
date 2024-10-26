@@ -10,6 +10,21 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private List<Sound> _soundList;
 
+    public static AudioManager Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         foreach (Sound sound in _soundList)
