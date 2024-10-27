@@ -14,6 +14,6 @@ Keyboard:
     
 Gamepad:
   - Movement: Left stick
-  - Submit: Enter
-  - Launch: Spacebar
+  - Submit: Button South (A / X)
+  - Launch: Button South (A / X)
   - Pause: Start
